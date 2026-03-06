@@ -11,3 +11,6 @@
 | Changes with | New ISA design (x86 vs arm) | Technology improvements (faster transistor) |
 | Goal | Define what operations are supported | Efficiently execute those operations |
 | Design level | High level (logical design) | Low level (physical hardware) |
+
+## My thoughts for now
+1. In the visibiliity of `Computer Organization`, the sentence that says, "It is transparent or hidden from the programmer." didn't catch my brain's neuron with two hands, actually.
