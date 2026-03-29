@@ -1,15 +1,28 @@
+<link rel="stylesheet" href="style.css">
+
 # Atmega168
 
 
 ## AVR 8-bit microcontroller.  
-### Question:
+### Questions
 1. What is a microcontroller?  
 2. What does it mean by the phrase `8-bit microcontroller`?  
 3. Are there other `x-bit microcontrollers`?  
 
+### Answers
+A microcontroller is compact integrated circuit designed to perform a specific task inside an embedded system.  
+
+A microcontroller at minimum, combines three core components on a single chip.  
+1. CPU
+2. Memory: Flash, RAM
+3. IO peripherals: GPIO, Counter, Com interfaces
+
+An 8-bit CPU can work with 8 bit data at a time.  
+A Raspberry Pi Pico 2 might be a 64-bit microcontroller.  
+
 ## Advanced RISC architecture.  
 - 131 powerful instructions - most single clock
-- 32 x 8 general purpose registers.
+- 32 8-bit general purpose registers.
 - Fully static operation
 - Up to 16 MIPS throughput at 16MHz
 - On-chip 2-cycle multiplier
@@ -19,7 +32,26 @@
 2. How many types of registers does a computer have?
 3. What is static and dynamic operation?
 4. MIPS ? Throughput ? What are those things?
-5. What is a multiplier? Why is it called cycle multiplier?
+5. What is a multiplier?
+
+### Answers
+Add value of two registers: single clock
+Fetch data from RAM: multi clock
+
+So many types of registers
+1. GPRs
+2. Special Function Regsiters
+3. Status Registers
+4. Program Counter
+6. Stack Pointer
+7. MAR, MDR, IR
+
+Dynamic operations means, CPU can not pause indefinitely without losing data in normal mode. The sleep mode is special case.
+
+MIPS = Million Instructions Per Second
+Throughput = Rate at which useful work is done.
+
+A dedicated section for multiplication that can multiply two 8-bit integer in just 2 clock cycles.
 
 ## Non-volatile program and memories
 - 4/8/16 KB of __in-system-self-programmable__ flash.
@@ -35,10 +67,21 @@
 ### Questions
 1. What is 'in-system-self-programmable' flash?
 2. What is boot code section? What does it do?
-3. Why is independent lock bit special?
-4. So, EEPROM is not part of the flash memory, right?
-5. Can there be any external SRAM?
-6. How do I know the programming lock works?
+3. So, EEPROM is not part of the flash memory, right?
+4. Can there be any external SRAM?
+5. How do I know the programming lock works?
+
+### Answers
+The flash memory can be reprogrammed without taking it off from the chip. Moreover, the cpu can erase and write new data or program on the flash. But for important runtime data, use EEPROM. Flash's read/write cycle is less than that of EEPROM.
+
+Flash can be divided into bootloader and firmware. Firmware can be updated by the bootloader while the program is running.
+
+Flash and EEPROM are different hardware things.
+
+Some MCU supports external RAM. But not this one. Although there are ways to use external RAM with SPI or similar interfaces.
+
+If locked, that firmware will be erased if I try to read or write.
+
 
 ## Peripheral features
 - Two 8-bit counter with separate prescaler and compare mode.
