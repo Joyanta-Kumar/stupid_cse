@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./style.css">
+
 # Addressing modes  
 
 1. [Immediate](#immediate)
