@@ -5,9 +5,9 @@
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | Fetch1 | Dcode1 | Exec1  | Fetch2 | Dcode2 | Exec2  | Fetch3 | Dcode3 | Exec3  |
 
-Total cycle = K * N = 3 * 3 -> 9
-K = Number of stages
-N = Number of instructions
+Total cycle = K * N = 3 * 3 -> 9  
+K = Number of stages  
+N = Number of instructions  
 
 | STEP-1 | STEP-2 | STEP-3 | STEP-4 | STEP-5 | STEP-6 | STEP-7 | STEP-8 | STEP-9 |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
@@ -15,15 +15,15 @@ N = Number of instructions
 |        | Fetch2 | Dcode2 | Dcode3 |        |        |        |        |        |
 |        |        | Fetch3 |        |        |        |        |        |        |
 
-Total cycle = K + (N - 1) = 3 + (3 - 1) -> 5
-K = Number of stages
-N = Number of instructions
+Total cycle = K + (N - 1) = 3 + (3 - 1) -> 5  
+K = Number of stages  
+N = Number of instructions  
 
 ## Hazards
 
-1. [Control Hazard](#control-hazard)
-2. [Data Dependency](#data-dependency)
-3. [Structural Hazard](#structural-hazard)
+1. [Control Hazard](#control-hazard)  
+2. [Data Dependency](#data-dependency)  
+3. [Structural Hazard](#structural-hazard)  
 
 ### Control Hazard
 
