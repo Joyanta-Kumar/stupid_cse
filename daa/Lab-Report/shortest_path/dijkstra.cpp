@@ -1,46 +1,49 @@
 #include <iostream>
 #include <cmath>
 #define DIM 5
-#define G INFINITY
+#define I INFINITY
 using namespace std;
 
 double graph[DIM][DIM] = {
-    {G, 2, 1, 7, 3}, // 0
-    {2, G, G, 1, 1}, // 1
-    {1, G, G, 6, 2}, // 2
-    {7, 1, 6, G, 5}, // 3
-    {3, 1, 2, 5, G}, /* 4 */ };
+    {I, 2, 1, 7, 3}, // 0
+    {2, I, I, 1, 1}, // 1
+    {1, I, I, 6, 2}, // 2
+    {7, 1, 6, I, 5}, // 3
+    {3, 1, 2, 5, I}, // 4
+};
 
 double dp[DIM];
+bool visited[DIM];
 
-void dijkstra(int start) {
-    int visited[DIM];
-    int source = start;
-    for (int i = 0; i < DIM; i++) { dp[i] = G; visited[i] = 0; }
-    dp[source] = 0;
-
-    cout << source << "\t";
-    for (int i = 0; i < DIM; i++) cout << dp[i] << "\t";
-    cout << endl;
-
-    for (int i = 0; i < DIM; i++) {   
-        cout << source << "\t";
-        for (int j = 0; j < DIM; j++) {
-            dp[j] = min(dp[j], dp[source] + graph[source][j]);
-            if (!visited[j]) cout << dp[j] << "\t";
-            else cout << "\t"; }
-        
-        visited[source] = 1; double minDist = G;
-
-        for (int j = 0; j < DIM; j++) {
-            if (dp[j] < minDist && !visited[j]) {
-                minDist = dp[j];
-                source = j; } }
-        cout << endl;
+int chooseSource(void) {
+    double minNumber = I;
+    int source;
+    for (int index = 0; index < DIM; index++) {
+        if (!visited[index] && dp[index] < minNumber) {
+            minNumber = dp[index];
+            source = index;
+        }
     }
+    visited[source] = true;
+    return source;
 }
+
+double getCost(int u, int v) { return graph[u][v]; }
 
 int main()
 {
-    dijkstra(0);
+    int start = 0;
+    for (int i = 0; i < DIM; i++) {
+        dp[i] = I;
+        visited[i] = false;
+    }
+    dp[start] = 0;
+
+    for (int i = 0; i < DIM; i++) {
+        for (int v = 0, u = chooseSource(); v < DIM; v++) {
+            dp[v] = min(dp[v], dp[u] + getCost(u, v));
+        }
+    }
+
+    return 0;
 }
