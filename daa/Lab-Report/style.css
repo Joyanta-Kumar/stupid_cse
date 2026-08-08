@@ -27,3 +27,12 @@ code {
 .page-brake {
     page-break-after: always;
 }
+
+p {
+    line-height: 1.25;
+    
+ }
+
+a {
+    color: inherit;
+}
