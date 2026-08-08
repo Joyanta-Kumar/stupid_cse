@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS students;
-DROP TABLE IF EXISTS teachers;
-DROP TABLE IF EXISTS courses;
-DROP TABLE IF EXISTS departments;
-
 CREATE TABLE IF NOT EXISTS departments (
     dept_code VARCHAR(10) NOT NULL,
     dept_name VARCHAR(50) NOT NULL,
@@ -68,17 +63,17 @@ CREATE TABLE IF NOT EXISTS courses (
         FOREIGN KEY (dept_code) REFERENCES departments(dept_code),
     -- `credit_hours` must be in valid range(0, 6.0]  --exclude 0, include 6.0
     CONSTRAINT course_credit_hour_in_valid_range
-        CHECK (credit_hours < 0 AND credit_hours <= 6.0)
+        CHECK (credit_hours > 0 AND credit_hours <= 6.0)
 );
 CREATE TABLE IF NOT EXISTS course_offerings (
     course_code CHAR(10) NOT NULL,
     teacher_id INT UNSIGNED NOT NULL,
     dept_code VARCHAR(10) NOT NULL,
     semester SMALLINT UNSIGNED NOT NULL,
-    academic_year SMALLINT UNSIGNED NOT NULL,
+    session_start_year SMALLINT UNSIGNED NOT NULL,
     -- Rofik sir 2022 shal e cse dept er 3rd semester e math-xxx course nisee.
     -- TODO: Kintu ami kemne janmu je 2022 shal e rofik sir er oi math course a kon polapan porse?
-    CONSTRAINT pk_course_offerings PRIMARY KEY (teacher_id, academic_year, dept_code, semester, course_code),
+    CONSTRAINT pk_course_offerings PRIMARY KEY (teacher_id, session_start_year, dept_code, semester, course_code),
     -- teacher exists.
     CONSTRAINT fk_course_teacher_actually_exists
         FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
@@ -90,6 +85,6 @@ CREATE TABLE IF NOT EXISTS course_offerings (
         CHECK (semester <= 8),
     -- `academic_year` can not be more than 1800 years ago.
     CONSTRAINT course_could_not_be_offered_before_university_was
-        CHECK (session_start_year < 1800),
+        CHECK (session_start_year < 1800)
     -- TODO: need a way to say that, "Only departmental teachers are allowed to take departmental courses."
-)
+);
