@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+body {
+    font-family: "Roboto Serif";
+    font-size: 9.5pt;
+}
+
+h1 {
+    border-bottom: none;
+    font-size: 24pt;
+    page-break-before: always;
+}
+
+h2 {
+    font-family: "Roboto";
+    color: #666666;
+    margin-top: 1cm;
+    margin-bottom: 0.5cm;
+    font-size: 13pt;
+}
+
+code {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 9.5pt;
+}
+
+.page-brake {
+    page-break-after: always;
+}
+
+p {
+    line-height: 1.25;
+    
+ }
+
+a {
+    color: inherit;
+}
+
+table, tr, th, td {
+    border-collapse: collapse;
+    border: 1px solid;
+}
+
+table {
+    margin-left: 0.25in;
+}
